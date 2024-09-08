@@ -27,7 +27,7 @@ Expose service to the public
 Automated, scalable microservices deployment on EKS
 
 ## Getting Started
-To get started with this project, refer to our [comprehensive guide](https://medium.com/@www.gyenoch/deployment-of-youtube-clone-on-kubernetes-cluster-with-slack-integration-f57f8a9dbe5f) that walks you through infrastructure provisioning, CI/CD pipeline configuration, EKS cluster creation, and more.
+To get started with this project, refer to our [comprehensive guide](https://medium.com/@www.gyenoch/e-commerce-microservices-deployment-with-aws-eks-jenkins-6edc611ee11c) that walks you through infrastructure provisioning, CI/CD pipeline configuration, EKS cluster creation, and more.
 
 ## Contributing
 We welcome contributions! If you have ideas for enhancements or find any issues, please open a pull request or file an issue.
