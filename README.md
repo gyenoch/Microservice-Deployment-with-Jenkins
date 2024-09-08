@@ -21,6 +21,8 @@ Jenkins, Kubernetes, Amazon EKS, AWS CLI
 📈 **Pipeline Stages:**
 Deploy Kubernetes resources using kubectl
 Verify service deployment
+Expose service to the public
+
 📈 **Outcome:** 
 Automated, scalable microservices deployment on EKS
 
