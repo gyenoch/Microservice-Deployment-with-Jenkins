@@ -31,6 +31,17 @@ Attach this policy to your user as well
 
 ![Policies To Attach](https://github.com/jaiswaladi246/Microservice/blob/Infra-Steps/Policies.png)
 
+### Create an EC2 Instance
+
+Make sure you make the necessary modifications to your terraform code before creating a new instance
+
+```bash
+cd EC2-terraform
+terraform init
+terraform plan
+terraform apply
+```
+
 # AWSCLI
 
 ```bash
@@ -62,8 +73,8 @@ eksctl version
 
 ```bash
 eksctl create cluster --name=EKS-1 \
-                      --region=ap-south-1 \
-                      --zones=ap-south-1a,ap-south-1b \
+                      --region=us-east-1 \
+                      --zones=us-east-1a,us-east-1b \
                       --without-nodegroup
 
 eksctl utils associate-iam-oidc-provider \
@@ -72,7 +83,7 @@ eksctl utils associate-iam-oidc-provider \
     --approve
 
 eksctl create nodegroup --cluster=EKS-1 \
-                       --region=ap-south-1 \
+                       --region=us-east-1 \
                        --name=node2 \
                        --node-type=t3.medium \
                        --nodes=3 \
@@ -80,7 +91,7 @@ eksctl create nodegroup --cluster=EKS-1 \
                        --nodes-max=4 \
                        --node-volume-size=20 \
                        --ssh-access \
-                       --ssh-public-key=DevOps \
+                       --ssh-public-key=devOps \
                        --managed \
                        --asg-access \
                        --external-dns-access \
@@ -101,7 +112,7 @@ eksctl create nodegroup --cluster=EKS-1 \
 apiVersion: v1
 kind: ServiceAccount
 metadata:
-  name: jenkins
+  name: default
   namespace: webapps
 ```
 
@@ -164,7 +175,18 @@ roleRef:
 subjects:
 - namespace: webapps 
   kind: ServiceAccount
-  name: jenkins 
+  name: default
+```
+
+```yaml
+apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  namespace: webapps  
+  annotations:
+    kubernetes.io/service-account.name: default
 ```
 
 ### Generate token using service account in the namespace
