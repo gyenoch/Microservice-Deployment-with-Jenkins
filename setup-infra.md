@@ -31,7 +31,7 @@ Attach this policy to your user as well
 
 ![Policies To Attach](https://github.com/jaiswaladi246/Microservice/blob/Infra-Steps/Policies.png)
 
-### Create an EC2 Instance
+## Create an EC2 Instance
 
 Make sure you make the necessary modifications to your terraform code before creating a new instance
 
@@ -102,6 +102,27 @@ eksctl create nodegroup --cluster=EKS-1 \
 
 * Open INBOUND TRAFFIC IN ADDITIONAL Security Group
 * Create Servcie account/ROLE/BIND-ROLE/Token
+
+## Create two new namespaces [webapps and elk]
+
+```yaml
+# Namespace for microservice applications
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: webapps
+  labels:
+    purpose: microservice
+
+---
+# Namespace for ELK stack
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: elk
+  labels:
+    purpose: elk
+```
 
 ## Create Service Account, Role & Assign that role, And create a secret for Service Account and geenrate a Token
 
