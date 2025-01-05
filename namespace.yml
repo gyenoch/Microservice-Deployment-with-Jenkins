@@ -1,0 +1,16 @@
+# Namespace for microservice applications
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: webapps
+  labels:
+    purpose: microservice
+
+---
+# Namespace for ELK stack
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: elk
+  labels:
+    purpose: elk
