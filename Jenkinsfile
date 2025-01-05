@@ -2,6 +2,12 @@ pipeline {
     agent any
 
     stages {
+        stage('Cleaning Workspace') {
+            steps {
+                cleanWs()
+            }
+        }
+
         stage('Deploy Kubernetes') {
             steps {
                 withKubeCredentials(kubectlCredentials: [[
@@ -66,4 +72,3 @@ pipeline {
         }
     }
 }
-
