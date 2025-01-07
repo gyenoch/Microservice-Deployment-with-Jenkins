@@ -8,7 +8,7 @@ pipeline {
             }
         }
 
-        stage('Deploy Kubernetes') {
+        stage('Deploy to Kubernetes') {
             steps {
                 withKubeCredentials(kubectlCredentials: [[
                     caCertificate: '',
