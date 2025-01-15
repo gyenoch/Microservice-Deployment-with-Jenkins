@@ -7,9 +7,12 @@ pipeline {
     }
 
     stages {
-        stage('Cleaning Workspace') {
+        stage('Checkout') {
             steps {
-                cleanWs()
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/shippingservice']],
+                    userRemoteConfigs: [[url: 'https://github.com/gyenoch/Microservice-Deployment-with-Jenkins.git']]
+                ])
             }
         }
 
@@ -19,7 +22,8 @@ pipeline {
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectName=shippingservice \
-                    -Dsonar.projectKey=shippingservice
+                    -Dsonar.projectKey=shippingservice \
+                    -Dsonar.exclusions=**/*.java
                     '''
                 }
             }
