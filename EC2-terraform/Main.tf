@@ -79,7 +79,7 @@ resource "aws_iam_instance_profile" "microservice_instance_profile" {
 # JENKINS SONARQUBE EC2 INSTANCE
 resource "aws_instance" "web" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t3.medium"
+  instance_type          = "t2.large"
   key_name               = "devOps"
   vpc_security_group_ids = [aws_security_group.Server_sg.id]
   user_data              = templatefile("./EC2.sh", {})
