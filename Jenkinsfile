@@ -57,7 +57,7 @@ pipeline {
                     serverUrl: 'https://566BD9D26D6BEEC3E63CB61DF00C957F.gr7.us-east-1.eks.amazonaws.com/'
                 ]]) {
                     sh "kubectl apply -f elk"
-                    sleep 60
+                    sleep 30
                 }
             }
         }
