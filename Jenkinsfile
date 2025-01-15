@@ -8,12 +8,7 @@ pipeline {
     }
 
     stages {
-        stage('Cleaning Workspace') {
-            steps {
-                cleanWs()
-            }
-        }
-
+        
         // stage('Checkout') {
         //     steps {
         //         checkout([$class: 'GitSCM',
