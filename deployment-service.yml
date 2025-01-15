@@ -548,7 +548,7 @@ spec:
       serviceAccountName: default
       containers:
       - name: server
-        image: gyenoch/shippingservice:latest
+        image: gyenoch/shippingservice:2
         ports:
         - containerPort: 50051
         env:
