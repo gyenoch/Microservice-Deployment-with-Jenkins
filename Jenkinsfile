@@ -9,14 +9,14 @@ pipeline {
 
     stages {
         
-        // stage('Checkout') {
-        //     steps {
-        //         checkout([$class: 'GitSCM',
-        //             branches: [[name: '*/adservice']],
-        //             userRemoteConfigs: [[url: 'https://github.com/gyenoch/Microservice-Deployment-with-Jenkins.git']]
-        //         ])
-        //     }
-        // }
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/adservice']],
+                    userRemoteConfigs: [[url: 'https://github.com/gyenoch/Microservice-Deployment-with-Jenkins.git']]
+                ])
+            }
+        }
 
 
         stage('Sonarqube Code Analysis') {
