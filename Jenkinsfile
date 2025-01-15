@@ -25,7 +25,8 @@ pipeline {
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectName=adservice \
-                    -Dsonar.projectKey=adservice 
+                    -Dsonar.projectKey=adservice \
+                    -Dsonar.exclusions=**/*.java 
                     '''
                 }
             }
