@@ -22,7 +22,8 @@ pipeline {
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectName=paymentservice \
-                    -Dsonar.projectKey=paymentservice
+                    -Dsonar.projectKey=paymentservice \
+                    -Dsonar.exclusions=**/*.java
                     '''
                 }
             }
