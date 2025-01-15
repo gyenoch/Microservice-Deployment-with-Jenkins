@@ -8,6 +8,12 @@ pipeline {
             }
         }
 
+        stage('Checkout Repository') {
+            steps {
+                checkout scm
+            }
+        }
+
         stage('Deploy to Kubernetes') {
             steps {
                 withKubeCredentials(kubectlCredentials: [[
