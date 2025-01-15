@@ -16,7 +16,7 @@ pipeline {
                     contextName: '',
                     credentialsId: 'k8-token',
                     namespace: 'webapps',
-                    serverUrl: 'https://14b2d3f625b31ab32fa28b8c949c2b64.gr7.us-east-1.eks.amazonaws.com/'
+                    serverUrl: 'https://566BD9D26D6BEEC3E63CB61DF00C957F.gr7.us-east-1.eks.amazonaws.com/'
                 ]]) {
                     sh "kubectl apply -f deployment-service.yml"
                     sleep 60
@@ -32,7 +32,7 @@ pipeline {
                     contextName: '',
                     credentialsId: 'k8-token',
                     namespace: 'webapps',
-                    serverUrl: 'https://14b2d3f625b31ab32fa28b8c949c2b64.gr7.us-east-1.eks.amazonaws.com/'
+                    serverUrl: 'https://566BD9D26D6BEEC3E63CB61DF00C957F.gr7.us-east-1.eks.amazonaws.com/'
                 ]]) {
                     sh "kubectl get svc -n webapps"
                     sleep 30
@@ -48,7 +48,7 @@ pipeline {
                     contextName: '',
                     credentialsId: 'k8-token',
                     namespace: 'elk',
-                    serverUrl: 'https://14b2d3f625b31ab32fa28b8c949c2b64.gr7.us-east-1.eks.amazonaws.com/'
+                    serverUrl: 'https://566BD9D26D6BEEC3E63CB61DF00C957F.gr7.us-east-1.eks.amazonaws.com/'
                 ]]) {
                     sh "kubectl apply -f elk"
                     sleep 60
@@ -64,7 +64,7 @@ pipeline {
                     contextName: '',
                     credentialsId: 'k8-token',
                     namespace: 'elk',
-                    serverUrl: 'https://14b2d3f625b31ab32fa28b8c949c2b64.gr7.us-east-1.eks.amazonaws.com/'
+                    serverUrl: 'https://566BD9D26D6BEEC3E63CB61DF00C957F.gr7.us-east-1.eks.amazonaws.com/'
                 ]]) {
                     sh "kubectl get svc -n elk"
                 }
