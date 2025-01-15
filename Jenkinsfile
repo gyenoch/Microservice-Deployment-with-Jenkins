@@ -7,9 +7,12 @@ pipeline {
     }
 
     stages {
-        stage('Cleaning Workspace') {
+        stage('Checkout') {
             steps {
-                cleanWs()
+                checkout([$class: 'GitSCM',
+                    branches: [[name: '*/paymentservice']],
+                    userRemoteConfigs: [[url: 'https://github.com/gyenoch/Microservice-Deployment-with-Jenkins.git']]
+                ])
             }
         }
 
