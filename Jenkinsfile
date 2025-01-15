@@ -1,9 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        maven 'maven3'
-    }
 
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
@@ -26,11 +23,6 @@ pipeline {
             }
         }
 
-        stage('maven build'){
-            steps{
-                sh 'mvn clean package'
-            }
-        }
 
         stage('Sonarqube Code Analysis') {
             steps {
