@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        maven 'maven3'
+    }
+
     environment {
         SCANNER_HOME = tool 'sonar-scanner'
         NVD_API_KEY = credentials('nvd-api-key')
@@ -22,6 +26,11 @@ pipeline {
             }
         }
 
+        stage('maven build'){
+            steps{
+                sh 'mvn clean package'
+            }
+        }
 
         stage('Sonarqube Code Analysis') {
             steps {
@@ -29,7 +38,8 @@ pipeline {
                     sh '''
                     $SCANNER_HOME/bin/sonar-scanner \
                     -Dsonar.projectName=adservice \
-                    -Dsonar.projectKey=adservice
+                    -Dsonar.projectKey=adservice \
+                    -Dsonar.java.binaries=target/classes
                     '''
                 }
             }
