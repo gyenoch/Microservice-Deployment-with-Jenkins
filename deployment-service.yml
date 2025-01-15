@@ -654,7 +654,7 @@ spec:
       terminationGracePeriodSeconds: 5
       containers:
       - name: server
-        image: gyenoch/adservice:latest
+        image: gyenoch/adservice:14
         ports:
         - containerPort: 9555
         env:
