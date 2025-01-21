@@ -200,7 +200,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: gyenoch/frontend:2
+          image: gyenoch/frontend:1
           ports:
           - containerPort: 8080
           readinessProbe:
