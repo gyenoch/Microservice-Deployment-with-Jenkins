@@ -8,6 +8,6 @@ spec:
     app: kibana
   ports:
     - protocol: TCP
-      port: 5601
-      targetPort: 80
+      port: 80
+      targetPort: 5601
   type: LoadBalancer
