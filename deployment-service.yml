@@ -81,7 +81,7 @@ spec:
       serviceAccountName: default
       containers:
         - name: server
-          image: gyenoch/checkoutservice:3
+          image: gyenoch/checkoutservice:1
           ports:
           - containerPort: 5050
           readinessProbe:
