@@ -38,11 +38,11 @@ spec:
           periodSeconds: 30
         resources: # Add resource limits and requests
           requests:
-            memory: "1Gi"
-            cpu: "500m"
+            memory: "64Mi"
+            cpu: "100m"
           limits:
-            memory: "2Gi"
-            cpu: "1"
+            memory: "128Mi"
+            cpu: "150m"
       volumes:
       - name: logstash-config
         configMap:
