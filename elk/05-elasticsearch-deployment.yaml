@@ -1,0 +1,42 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: elasticsearch
+  namespace: elk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: elasticsearch
+  template:
+    metadata:
+      labels:
+        app: elasticsearch
+    spec:
+      containers:
+      - name: elasticsearch
+        image: docker.elastic.co/elasticsearch/elasticsearch:7.10.0
+        ports:
+        - containerPort: 9200 # Ensure container port is explicitly defined
+        - containerPort: 9300 # For cluster communication
+        volumeMounts:
+        - name: elasticsearch-data
+          mountPath: /usr/share/elasticsearch/data
+        env:
+        - name: discovery.type
+          value: single-node # For development or testing purposes
+        - name: cluster.name
+          value: "elk-cluster" # Set a cluster name for clarity
+        - name: ES_JAVA_OPTS
+          value: "-Xms1g -Xmx1g" # Optimize JVM memory settings
+        resources:
+          requests:
+            memory: "2Gi"
+            cpu: "500m"
+          limits:
+            memory: "4Gi"
+            cpu: "1"
+      volumes:
+      - name: elasticsearch-data
+        persistentVolumeClaim:
+          claimName: elasticsearch-pvc

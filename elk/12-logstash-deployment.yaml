@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: logstash
+  namespace: elk
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: logstash
+  template:
+    metadata:
+      labels:
+        app: logstash
+    spec:
+      containers:
+      - name: logstash
+        image: docker.elastic.co/logstash/logstash:7.10.0
+        ports:
+        - containerPort: 5044
+        env:
+        - name: LS_JAVA_OPTS
+          value: "-Xms1g -Xmx1g" # Optimize JVM memory allocation for Logstash
+        volumeMounts:
+        - name: logstash-config
+          mountPath: /usr/share/logstash/pipeline
+        readinessProbe: # Ensure Logstash is healthy before routing traffic
+          httpGet:
+            path: /
+            port: 5044
+          initialDelaySeconds: 30
+          periodSeconds: 10
+        livenessProbe: # Restart Logstash if it's unresponsive
+          httpGet:
+            path: /
+            port: 5044
+          initialDelaySeconds: 60
+          periodSeconds: 30
+        resources: # Add resource limits and requests
+          requests:
+            memory: "1Gi"
+            cpu: "500m"
+          limits:
+            memory: "2Gi"
+            cpu: "1"
+      volumes:
+      - name: logstash-config
+        configMap:
+          name: logstash-config

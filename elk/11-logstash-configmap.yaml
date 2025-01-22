@@ -8,11 +8,15 @@ data:
     input {
       beats {
         port => 5044
+        ssl => false # Set to 'true' if using TLS
       }
     }
     output {
       elasticsearch {
-        hosts => ["elasticsearch:9200"]
+        hosts => ["http://elasticsearch:9200"] # Explicitly specify protocol
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
+      }
+      stdout { # For debugging purposes
+        codec => rubydebug
       }
     }

@@ -1,13 +1,13 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: kibana
+  name: logstash
   namespace: elk
 spec:
   selector:
-    app: kibana
+    app: logstash
   ports:
     - protocol: TCP
-      port: 80
-      targetPort: 5601
-  type: LoadBalancer
+      port: 5044
+      targetPort: 5044
+  type: ClusterIP
