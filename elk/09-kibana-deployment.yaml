@@ -25,22 +25,22 @@ spec:
           value: "kibana.local"
         - name: XPACK_SECURITY_ENABLED
           value: "true"
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "100m"
-          limits:
-            memory: "128Mi"
-            cpu: "150m"
-        livenessProbe:
-          httpGet:
-            path: /
-            port: 5601
-          initialDelaySeconds: 60
-          periodSeconds: 10
-        readinessProbe:
-          httpGet:
-            path: /
-            port: 5601
-          initialDelaySeconds: 60
-          periodSeconds: 10
+        # resources:
+        #   requests:
+        #     memory: "64Mi"
+        #     cpu: "100m"
+        #   limits:
+        #     memory: "128Mi"
+        #     cpu: "150m"
+        # livenessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 5601
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 10
+        # readinessProbe:
+        #   httpGet:
+        #     path: /
+        #     port: 5601
+        #   initialDelaySeconds: 60
+        #   periodSeconds: 10

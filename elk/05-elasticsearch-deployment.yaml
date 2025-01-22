@@ -19,9 +19,9 @@ spec:
         ports:
         - containerPort: 9200 # Ensure container port is explicitly defined
         - containerPort: 9300 # For cluster communication
-        volumeMounts:
-        - name: elasticsearch-data
-          mountPath: /usr/share/elasticsearch/data
+        # volumeMounts:
+        # - name: elasticsearch-data
+        #   mountPath: /usr/share/elasticsearch/data
         env:
         - name: discovery.type
           value: single-node # For development or testing purposes
@@ -29,14 +29,14 @@ spec:
           value: "elk-cluster" # Set a cluster name for clarity
         - name: ES_JAVA_OPTS
           value: "-Xms1g -Xmx1g" # Optimize JVM memory settings
-        resources:
-          requests:
-            memory: "64Mi"
-            cpu: "100m"
-          limits:
-            memory: "128Mi"
-            cpu: "150m"
-      volumes:
-      - name: elasticsearch-data
-        persistentVolumeClaim:
-          claimName: elasticsearch-pvc
+      #   resources:
+      #     requests:
+      #       memory: "64Mi"
+      #       cpu: "100m"
+      #     limits:
+      #       memory: "128Mi"
+      #       cpu: "150m"
+      # volumes:
+      # - name: elasticsearch-data
+      #   persistentVolumeClaim:
+      #     claimName: elasticsearch-pvc
