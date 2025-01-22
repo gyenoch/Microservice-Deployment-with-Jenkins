@@ -24,7 +24,7 @@ spec:
         - name: SERVER_NAME
           value: "kibana.local"
         - name: XPACK_SECURITY_ENABLED
-          value: "true"
+          value: "false"
         # resources:
         #   requests:
         #     memory: "64Mi"

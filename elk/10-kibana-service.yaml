@@ -3,12 +3,6 @@ kind: Service
 metadata:
   name: kibana
   namespace: elk
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
-    service.beta.kubernetes.io/aws-load-balancer-backend-protocol: "http"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-path: "/"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-port: "80"
-    service.beta.kubernetes.io/aws-load-balancer-healthcheck-interval: "20"
 spec:
   selector:
     app: kibana
