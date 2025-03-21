@@ -15,32 +15,32 @@ spec:
     spec:
       containers:
       - name: kibana
-        image: docker.elastic.co/kibana/kibana:7.10.0
+        image: docker.elastic.co/kibana/kibana:8.17.3
         ports:
         - containerPort: 5601
         env:
-        - name: ELASTICSEARCH_HOSTS
+        - name: ELASTICSEARCH_URL
           value: "http://elasticsearch:9200"
         - name: SERVER_NAME
           value: "kibana.local"
         - name: XPACK_SECURITY_ENABLED
           value: "false"
-        # resources:
-        #   requests:
-        #     memory: "64Mi"
-        #     cpu: "100m"
-        #   limits:
-        #     memory: "128Mi"
-        #     cpu: "150m"
-        # livenessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 5601
-        #   initialDelaySeconds: 60
-        #   periodSeconds: 10
-        # readinessProbe:
-        #   httpGet:
-        #     path: /
-        #     port: 5601
-        #   initialDelaySeconds: 60
-        #   periodSeconds: 10
+        resources:
+          requests:
+            memory: "200Mi"
+            cpu: "100m"
+          limits:
+            memory: "250Mi"
+            cpu: "200m"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 5601
+          initialDelaySeconds: 60
+          periodSeconds: 10
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 5601
+          initialDelaySeconds: 60
+          periodSeconds: 10

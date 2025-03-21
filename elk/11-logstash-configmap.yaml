@@ -13,10 +13,11 @@ data:
     }
     output {
       elasticsearch {
-        hosts => ["http://elasticsearch:9200"] # Explicitly specify protocol
+        hosts => ["http://elasticsearch:9200"] 
         index => "%{[@metadata][beat]}-%{[@metadata][version]}-%{+YYYY.MM.dd}"
       }
-      stdout { # For debugging purposes
+      stdout { 
         codec => rubydebug
       }
     }
+#index => "%{[@metadata][beat]}-%{+YYYY.MM.dd}"
